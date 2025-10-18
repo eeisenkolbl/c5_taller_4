@@ -1,16 +1,16 @@
+
 services:
-
-  db:
+  postgres:
     image: postgres
-    restart: always
-    
-    shm_size: 128mb
-   
+    container_name: bd_postgres
     environment:
-      POSTGRES_PASSWORD: test
-
-  adminer:
-    image: adminer
-    restart: always
+      POSTGRES_DB: serversgaming
+      POSTGRES_USER: koko 
+      POSTGRES_PASSWORD: unacontraseñasegurasabesbien123
     ports:
-      - 8080:8080
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
